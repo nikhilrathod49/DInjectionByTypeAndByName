@@ -1,0 +1,22 @@
+<!-- bean-factory-demo.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- ByType Autowiring -->
+	  <bean id="personByType" class="com.example.Person" autowire="byType">
+		<!-- No need to specify property for address here -->
+	</bean> 
+
+	<!-- ByName Autowiring -->
+	<bean id="personByName" class="com.example.Person" autowire="byName">
+		<!-- Property "address" must match the bean id in the context -->
+		<property name="address" ref="address" />
+	</bean>
+
+	<!-- Explicitly defining the beans -->
+	<bean id="address" class="com.example.Address">
+		<property name="city" value="New York" />
+	</bean>
+</beans>
